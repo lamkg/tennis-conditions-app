@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { WEATHER_API_URL, WEATHER_API_KEY, GEO_API_URL, geoApiOptions } from "./api";
-import Forecast from "./forecast";
-import weatherCondition from "./weatherCondition";
-import { AsyncPaginate } from "react-select-async-paginate";
-import Search from "./search";
-
-
+import {
+  WEATHER_API_URL,
+  WEATHER_API_KEY,
+  GEO_API_URL,
+  geoApiOptions,
+} from './api';
+import Forecast from './forecast';
+import weatherCondition from './weatherCondition';
+import { AsyncPaginate } from 'react-select-async-paginate';
+import Search from './search';
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [location, setLocation] = useState('San Francisco');
   const [forecast, setForecast] = useState({});
   // const [cities, setCities] = useState([]);
-
 
   // search function for location
   const searchLocation = (event) => {
@@ -29,11 +31,11 @@ function App() {
     fetch(
       `${WEATHER_API_URL}/weather?q=${location}&appid=${WEATHER_API_KEY}&units=imperial`
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setCurrentWeather({ name: location, ...data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('An error occurred:', error);
       });
 
@@ -42,41 +44,38 @@ function App() {
     fetch(
       `${WEATHER_API_URL}/forecast?q=${location}&appid=${WEATHER_API_KEY}&units=imperial`
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setForecast({ name: location, ...data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('An error occurred:', error);
       });
   };
 
   useEffect(() => {
     fetchWeatherData();
-  }, []);
+  }, [location]);
 
- 
   const handleOnSearchChange = (searchData) => {
     setLocation(searchData.label);
     searchLocation();
- }
+  };
 
-
- // function to handle location selection from the autocomplete field
- const handleLocationChange = (selectedOption) => {
-   if (selectedOption) {
-     const selectedLocation = selectedOption.label
-     setLocation(selectedLocation);
-     searchLocation();
-   }
- };
+  // function to handle location selection from the autocomplete field
+  const handleLocationChange = (selectedOption) => {
+    if (selectedOption) {
+      const selectedLocation = selectedOption.label;
+      setLocation(selectedLocation);
+      searchLocation();
+    }
+  };
 
   return (
     <div className="app">
-      <h1 className='title'> Should I Play Tennis Today </h1>
+      <h1 className="title"> Should I Play Tennis Today </h1>
       <div className="search">
-      <Search onSearchChange={handleOnSearchChange}
-        />
+        <Search onSearchChange={handleOnSearchChange} />
       </div>
       <div className="container">
         <div className="top">
@@ -84,50 +83,76 @@ function App() {
             <p>{currentWeather.name}</p>
           </div>
           <div className="temp">
-            {currentWeather.main ? <h1>{currentWeather.main.temp.toFixed()}°F</h1> : null}
+            {currentWeather.main ? (
+              <h1>{currentWeather.main.temp.toFixed()}°F</h1>
+            ) : null}
           </div>
           <div className="description">
-            {currentWeather.weather ? <p>{currentWeather.weather[0].main}</p> : null}
+            {currentWeather.weather ? (
+              <p>{currentWeather.weather[0].main}</p>
+            ) : null}
           </div>
         </div>
 
-        {currentWeather.name !== undefined &&
+        {currentWeather.name !== undefined && (
           <div className="bottom">
             <div className="feels">
-              {currentWeather.main ? <p className='bold'>{currentWeather.main.feels_like.toFixed()}°F</p> : null}
+              {currentWeather.main ? (
+                <p className="bold">
+                  {currentWeather.main.feels_like.toFixed()}°F
+                </p>
+              ) : null}
               <p>Feels Like</p>
             </div>
             <div className="feels">
-              {currentWeather.main ? <p className='bold'>{currentWeather.main.temp_min.toFixed()}°F</p> : null}
+              {currentWeather.main ? (
+                <p className="bold">
+                  {currentWeather.main.temp_min.toFixed()}°F
+                </p>
+              ) : null}
               <p>min</p>
             </div>
             <div className="feels">
-              {currentWeather.main ? <p className='bold'>{currentWeather.main.temp_max.toFixed()}°F</p> : null}
+              {currentWeather.main ? (
+                <p className="bold">
+                  {currentWeather.main.temp_max.toFixed()}°F
+                </p>
+              ) : null}
               <p>max</p>
             </div>
             <div className="humidity">
-              {currentWeather.main ? <p className='bold'>{currentWeather.main.humidity}%</p> : null}
+              {currentWeather.main ? (
+                <p className="bold">{currentWeather.main.humidity}%</p>
+              ) : null}
               <p>Humidity</p>
             </div>
             <div className="wind">
-              {currentWeather.wind ? <p className='bold'>{currentWeather.wind.speed.toFixed()} MPH</p> : null}
+              {currentWeather.wind ? (
+                <p className="bold">
+                  {currentWeather.wind.speed.toFixed()} MPH
+                </p>
+              ) : null}
               <p>Wind Speed</p>
             </div>
             <div className="wind">
-              {currentWeather.wind ? <p className='bold'>{currentWeather.wind.gust ? currentWeather.wind.gust.toFixed() : 0} MPH</p> : null}
+              {currentWeather.wind ? (
+                <p className="bold">
+                  {currentWeather.wind.gust
+                    ? currentWeather.wind.gust.toFixed()
+                    : 0}{' '}
+                  MPH
+                </p>
+              ) : null}
               <p>Gust</p>
             </div>
           </div>
-        }
-        <div className='sauce'>
+        )}
+        <div className="sauce">
           {currentWeather.name !== undefined && (
             <p>{weatherCondition(currentWeather)}</p>
           )}
         </div>
-        <div>
-          {forecast && forecast.list && <Forecast data={forecast} />}
-        </div>
-
+        <div>{forecast && forecast.list && <Forecast data={forecast} />}</div>
       </div>
     </div>
   );
