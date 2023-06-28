@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 export const geoApiOptions = {
   method: 'GET',
