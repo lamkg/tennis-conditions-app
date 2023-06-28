@@ -2,8 +2,8 @@
 
 
 **Project Overview:**
-Expand All
-	@@ -7,13 +7,13 @@ Introducing the Tennis Conditions App, designed specifically with tennis players
+
+Introducing the Tennis Conditions App, designed specifically with tennis players
 
 My goal is to provide tennis players with the essential weather information necessary to determine if playing conditions are suitable for a game. I've carefully curated the features to focus on the factors that directly impact tennis gameplay.
 
@@ -17,8 +17,7 @@ Playability Benchmark: Every player has their own preferences and tolerance for 
 
 Time-Saving: No need to sift through irrelevant weather details. Our app provides concise and relevant information tailored specifically for tennis players, saving you time and effort.
 
-Expand All
-	@@ -22,7 +22,7 @@ Enhanced Decision Making: With our playability benchmark feature, you can assess
+Enhanced Decision Making: With our playability benchmark feature, you can assess
 
 
 
