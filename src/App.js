@@ -7,14 +7,12 @@ import {
 } from './api';
 import Forecast from './forecast';
 import weatherCondition from './weatherCondition';
-import { AsyncPaginate } from 'react-select-async-paginate';
 import Search from './search';
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [location, setLocation] = useState('San Francisco');
   const [forecast, setForecast] = useState({});
-  // const [cities, setCities] = useState([]);
 
   // search function for location
   const searchLocation = (event) => {
@@ -58,17 +56,9 @@ function App() {
   }, [location]);
 
   const handleOnSearchChange = (searchData) => {
-    setLocation(searchData.label);
-    searchLocation();
-  };
-
-  // function to handle location selection from the autocomplete field
-  const handleLocationChange = (selectedOption) => {
-    if (selectedOption) {
-      const selectedLocation = selectedOption.label;
-      setLocation(selectedLocation);
-      searchLocation();
-    }
+    let selectedLocation = setLocation(searchData.label);
+    searchLocation(location);
+    fetchWeatherData(selectedLocation);
   };
 
   return (
