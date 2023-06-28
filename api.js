@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 export const geoApiOptions = {
   method: 'GET',
   params: { countryIds: 'US' },
