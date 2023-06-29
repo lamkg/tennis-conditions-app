@@ -1,0 +1,76 @@
+  
+  .forecast-items {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: .8rem auto;
+  padding: .8rem;
+  border-radius: 12px;
+  background-color: rgba(255,255,255, 0.13);
+  overflow: auto;
+  }
+  
+  .forecast-item {
+    display: block; /* Adjust the width and margin as needed */
+    margin: 1.2rem;
+    padding: 1px;
+    border: 1px solid transparent;
+    padding-bottom: 20px;
+    overflow: auto;
+  }
+
+  h2 {
+    font-size: 2.0rem;
+    padding: 1px;
+  }
+
+  img {
+    height: 7.5rem;
+    opacity: 1.5;
+    padding: 1px;
+    margin: 1px;
+  }
+
+  .forecast-item p{
+    padding: .3rem;
+  }
+
+  @media (max-width: 600px) {
+    /* Styles for mobile devices */
+  
+    .forecast-items {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0.8rem auto;
+      padding: 0.8rem;
+    }
+  
+    .forecast-item {
+      width: 90%;
+      margin: 0.8rem auto;
+      padding: 1px;
+      border: 1px solid transparent;
+      padding-bottom: 20px;
+      overflow: auto;
+    }
+  
+    h2 {
+      font-size: 1.6rem;
+      padding: 1px;
+    }
+  
+    img {
+      height: 7.5rem;
+      opacity: 1.5;
+      padding: 1px;
+      margin: 1px;
+    }
+  
+    .forecast-item p {
+      padding: 0.3rem;
+      font-size: 1.4rem;
+    }
+  }
+  
+
