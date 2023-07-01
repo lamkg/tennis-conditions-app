@@ -23,4 +23,4 @@ Enhanced Decision Making: With our playability benchmark feature, you can assess
 
 <b><u><span style="font-size:larger;"> Development: </span></u></b>
 
-React, AsyncPaginate, fetch, @fontawesome, CSS, Javascript
+React, AsyncPaginate, @fontawesome, CSS, Javascript
